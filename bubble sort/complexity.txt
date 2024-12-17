@@ -1,0 +1,38 @@
+Procédure du TriBulleOpt (E/S: un tableau T[n] d’entiers ; E/n ;entier) 
+Début
+ m=n-1 ;                                             2
+ Changement = vrai ; (variable booléenne)             1
+ Tant que (Changement=vrai) faire                    best 1   worst n                                                     
+   Changement = faux ;                               best 1   worst n
+   pour i=1 à m faire                                best m   worst 1+2+...+m= n*m(m+1)/2
+      si (T[i] > T[i+1]) alors                       best 1*m worst n*3[m(m+1)/2]
+         Permuter(T[i], T[i+1]) ; 
+         Changement =VRAI; 
+      Fsi ; 
+   Fait; 
+   m=m-1;                                            best 2  worst 2n  
+ Fait; 
+Fin; 
+
+
+best 2+1+1+1+m+m+2=2m+7=2n-2+7=2n+5
+worst 2+1+n+n+n(m(m+1)/2)+n(3[m(m+1)/2])+2n = 4n+3+2n(m°2+m)=4n+3+2n°2(n-1)
+
+
+
+Procédure du TriBulle (E/S: un tableau T[n] d’entiers ; E/n :entier) 
+Début 
+ Changement = vrai ; (variable booléenne)     1 
+ Tant que (Changement=vrai) faire             best 1 worst n 
+   Changement = faux ;                        best 1 worst n
+   pour i=1 à n-1 faire                       best n-1 worst n(n-1)
+     si (T[i] > T[i+1]) alors                 best n-1 worst 3*n(n-1)
+        Permuter(T[i], T[i+1]) ; 
+        Changement =VRAI; 
+     Fsi ; 
+   Fait; 
+ Fait; 
+Fin; 
+
+best 1+1+1+n-1+n-1=2n+1
+worst 1+n+n+n(n-1)+3*n(n-1)= 1+2n+n°2-n+3n°2-3n=4n°2-2n+1

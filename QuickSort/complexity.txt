@@ -1,0 +1,43 @@
+
+
+// Function to partition the array and return the index of the pivot
+int partition(int arr[], int p, int r) {              best      worst
+    int pivot = arr[p];                                 1         1                         
+    int i = p;                                          1         1
+    int j = r;                                          1         1
+
+    while (i < j) {                                     n        n
+        while (j > p && arr[j] >= pivot) {              
+            j--;                                        4n        n*n
+        }
+
+        while (i < r && arr[i] < pivot) {
+            i++;                                        4n        n*n
+        }
+
+        if (i < j) {                                    n          2*n
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[p], &arr[j]);                             n          n
+    return j;
+}
+
+11n+3 = O(n)
+3+4n+2n*n=O(n*n)
+
+
+// Function to implement QuickSort
+void quickSort(int arr[], int p, int r) {          Bestcase                                                   worstcase 
+    if (p < r) {                            1/2 -> 1/2*2 -> 1/2*2*2 ... -> 1/2^k   n=2^k  k=log2(n)          
+        int q = partition(arr, p, r);              ∑ 11n+3=11nlogn +3logn =O(nlogn)                              O(n*n)                          
+        quickSort(arr, p, q);                    nlogn                                                             n*n
+        quickSort(arr, q + 1, r);                nlog(n)                                                            n*n
+    }
+}
+
+                                               ∑ O(n)=O(nlogn)                                                ∑ i= n(n+1)/2
+
+
+

@@ -1,0 +1,47 @@
+function key (int x, int i):int
+
+{
+	int j, r;                                                             best     worst            
+
+	for (j=0; j<=i; j++) {                                             k*(k+2)/2  k*(k+2)/2          ite i=0   1
+		r = x%10;                                                           2        2                 ite i=1   2....
+		x = x/10;                                                           2        2                 ite i=k   k+1 
+	}                                                                   F(n)=2*k*(k+2)   
+	return r;
+}
+
+void  TriAux(int* T, int n,int i )
+{
+	int T1[n], T2[n], j=0, k=0, l=0;
+                                                                             best        worst
+    for(j=0;j<n;j++) {                                                       n            n
+    	T1[j] = cle (T[j], i);                                          F(n)=5*2*k*(k+2)    F(n)=5*2*k*(k+2)
+    }
+                                                                              best        worst
+	for(j=0; j<10; j++) {                                                       10*k          10*k
+		for(k=0; k<n; k++){                                                       n           n
+			if (T1[k] == j) {                                                      4n+9n          4n+9n
+				T2[l] = T[k];
+				l++;
+    		}
+        }
+	}
+                                                                               best        worst
+	for(k=0; k<n; k++){                                                          n*k            n*k
+		T[k] = T2[k];                                                               2             2
+    }
+}
+worst=best=5*2*k*(k+2)*n+(4*n*10+9*n*10)*k+2*n*k=O(n)
+
+
+
+
+/******************La Fonction TriBase****************************/
+void radixSort (int* T,int n,int k)
+{
+	int i;
+                                                     
+	for(i=0; i<k; i++) {                                                        
+		TriAux(T, n, i);                                  
+    }
+}
